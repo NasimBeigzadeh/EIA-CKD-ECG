@@ -37,7 +37,8 @@ in wearable and resource-constrained IoMT applications.
        alt="EIA-CKD Framework"
        width="900">
 </p>
-# Dataset
+---
+## Dataset
 
 This directory contains documentation and instructions for obtaining and preparing the ECG datasets used in the experiments reported in the paper.
 
