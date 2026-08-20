@@ -87,40 +87,6 @@ These distributions correspond to the experimental setup described in the manusc
 
 ---
 
-## 4. Data Processing Pipeline
-
-The raw ECG recordings were converted into digital ECG images before being provided to the convolutional neural network.
-
-The overall data pipeline is:
-
-```text
-Public ECG Dataset
-        |
-        v
-Raw 12-lead ECG recordings
-        |
-        v
-ECG preprocessing
-        |
-        v
-ECG-to-image conversion
-        |
-        v
-Train / Validation / Test split
-        |
-        v
-ImageFolder-compatible directory structure
-        |
-        v
-PyTorch DataLoader
-        |
-        v
-EIA-CKD model
-```
-
-The exact preprocessing and ECG-to-image conversion procedure is documented in the source code of this repository.
-
----
 
 ## 5. Expected Directory Structure
 
@@ -193,39 +159,4 @@ The paths should be changed according to the location of the downloaded and proc
 
 ---
 
-## 7. Important Note on Data Redistribution
 
-The original ECG datasets are not included in this GitHub repository.
-
-This repository provides:
-
-* dataset sources;
-* dataset class definitions;
-* dataset split information;
-* preprocessing documentation;
-* expected directory structure;
-* code required to prepare the data for model training.
-
-Users should download the datasets directly from their respective public sources and comply with the terms and citation requirements specified by the dataset providers.
-
----
-
-## 8. Reproducibility
-
-To reproduce the experiments, users should:
-
-1. Download the Chapman/Shaoxing and PTB-XL datasets from their official/public sources.
-2. Run the preprocessing scripts provided in this repository.
-3. Convert the ECG recordings into the required image representation.
-4. Organize the resulting images according to the directory structure described above.
-5. Run the training and evaluation scripts provided in the repository.
-
-Detailed commands for these steps will be provided in the main `README.md`.
-
----
-
-## 9. Dataset Citations
-
-Users reproducing the experiments should cite the original dataset publications in addition to citing this repository and the associated paper.
-
-Please consult the official dataset pages for the required citations.
