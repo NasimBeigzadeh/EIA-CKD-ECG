@@ -94,3 +94,76 @@ The PTB-XL dataset is publicly available through PhysioNet:
 Please refer to the official PhysioNet page for the dataset description, licensing, citation requirements, and access conditions.
 
 ---
+## Experimental Setup
+
+All experiments were implemented using **PyTorch** and conducted on the
+**Kaggle** platform.
+
+### Environment
+
+| Component | Configuration |
+|-----------|---------------|
+| Python | 3.12.13 |
+| PyTorch | 2.10.0 |
+| CUDA | 12.8 |
+| GPU | 2 × NVIDIA Tesla T4 |
+| GPU Memory | 15 GB per GPU |
+| Input Resolution | 300 × 300 |
+| Epochs | 50 |
+| Batch Size | 128 |
+| Optimizer | AdamW |
+| Learning Rate | 3 × 10⁻⁴ |
+| Weight Decay | 1 × 10⁻⁵ |
+| LR Scheduler | CosineAnnealingLR |
+| Label Smoothing | 0.1 |
+| Temperature | 3.0 |
+### Training Objective
+
+The training objective combines supervised classification with
+internal consistency-based knowledge distillation.
+
+The total loss is defined as:
+
+$$
+\mathcal{L}
+=
+\beta_{\mathrm{sup}}\mathcal{L}_{CE}
++
+(1-\beta_{\mathrm{sup}})
+\alpha_{KL}\mathcal{L}_{KL}
+$$
+
+where:
+
+- $\mathcal{L}_{CE}$ is the supervised Cross-Entropy loss with label smoothing.
+- $\mathcal{L}_{KL}$ is the KL-divergence consistency loss.
+- $\beta_{\mathrm{sup}}$ controls the contribution of ground-truth supervision.
+- $\alpha_{KL}$ controls the curriculum-based contribution of internal consensus.
+The curriculum coefficients are scheduled during training as:
+
+$$
+\beta_{\mathrm{sup}}
+=
+\max(0.6, 1-\frac{epoch}{80})
+$$
+
+and
+
+$$
+\alpha_{KL}
+=
+\min(1,\frac{epoch}{20}).
+$$
+
+This gradually shifts the training objective from primarily supervised learning
+toward internal consensus-based supervision.
+## Evaluation Metrics
+
+The proposed model is evaluated using the following standard metrics:
+
+- Accuracy
+- Recall (Sensitivity)
+- Precision
+- Specificity
+- F1-Score
+- AUROC
