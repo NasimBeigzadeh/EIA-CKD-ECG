@@ -54,14 +54,13 @@ PTB-XL is a large publicly available 12-lead ECG dataset containing
 21,799 clinical ECG records from 18,869 patients.
 
 Each ECG recording has a duration of 10 seconds and was acquired at
-500 Hz. The dataset provides cardiologist annotations and standardized
+100 Hz. The dataset provides cardiologist annotations and standardized
 ECG statements.
 
 ### Official dataset source
 
 [PTB-XL – PhysioNet](https://physionet.org/content/ptb-xl/1.0.3/)
 
-The experiments in this repository use version 1.0.3.
 
 ### Classes
 
