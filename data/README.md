@@ -1,115 +1,231 @@
-# Datasets
+# Dataset
 
-This study uses two publicly available benchmark ECG datasets:
+This directory contains documentation and instructions for obtaining and preparing the ECG datasets used in the experiments reported in the paper.
 
-1. Chapman-Shaoxing 12-lead ECG Database
-2. PTB-XL ECG Dataset
+The proposed EIA-CKD framework was trained and evaluated using two publicly available benchmark datasets:
 
-The raw datasets are not redistributed in this repository.
-Users should obtain the datasets from their official/public sources and follow
-the corresponding dataset licenses and terms of use.
+1. Chapman/Shaoxing 12-lead ECG Database
+2. PTB-XL ECG Database
+
+The original datasets are **not redistributed in this repository**. Users should obtain the datasets from their respective public sources and follow the preprocessing instructions provided in this repository.
 
 ---
 
-## 1. Chapman-Shaoxing 12-lead ECG Database
+## 1. Chapman/Shaoxing 12-lead ECG Database
 
-The Chapman-Shaoxing dataset contains 12-lead ECG recordings sampled at
-500 Hz with a duration of 10 seconds.
+The Chapman/Shaoxing dataset contains 12-lead ECG recordings sampled at 500 Hz with a duration of 10 seconds.
 
-For this study, four diagnostic/rhythm classes were considered:
+Four diagnostic classes were used in this study:
 
-| Class | Description |
-|---|---|
-| SR | Sinus Rhythm |
-| SB | Sinus Bradycardia |
-| GSVT | General Supraventricular Tachycardia |
-| AFIB | Atrial Fibrillation |
+| Class | Description                          |
+| ----- | ------------------------------------ |
+| SR    | Normal Sinus Rhythm                  |
+| SB    | Sinus Bradycardia                    |
+| GSVT  | General Supraventricular Tachycardia |
+| AFIB  | Atrial Fibrillation                  |
 
 ### Dataset source
 
-The dataset can be obtained from Kaggle:
+The dataset is publicly available through Kaggle:
 
-[Chapman-Shaoxing 12-lead ECG Database](https://www.kaggle.com/datasets/erarayamorenzomuten/chapmanshaoxing-12lead-ecg-database)
+[Chapman/Shaoxing 12-lead ECG Database — Kaggle](https://www.kaggle.com/datasets/erarayamorenzomuten/chapmanshaoxing-12lead-ecg-database?utm_source=chatgpt.com)
 
-### Dataset split
-
-The dataset was divided into training, validation, and test subsets.
-
-| Class | Training | Validation | Test |
-|---|---:|---:|---:|
-| SR | 1301 | 145 | 380 |
-| SB | 2821 | 308 | 760 |
-| GSVT | 1633 | 196 | 447 |
-| AFIB | 1599 | 169 | 457 |
-
-The original dataset was divided using an 80/20 train-test split.
-The training portion was subsequently divided into 90% training and 10%
-validation subsets.
+Please refer to the original dataset publication and source page for dataset licensing, attribution, and usage conditions.
 
 ---
 
-## 2. PTB-XL
+## 2. PTB-XL ECG Dataset
 
-PTB-XL is a large publicly available 12-lead ECG dataset containing
-21,799 clinical ECG records from 18,869 patients.
+PTB-XL is a large publicly available 12-lead ECG dataset containing clinical ECG recordings annotated by expert cardiologists.
 
-Each ECG recording has a duration of 10 seconds and was acquired at
-100 Hz. The dataset provides cardiologist annotations and standardized
-ECG statements.
+In this study, the superdiagnostic classification scheme was adopted.
 
-### Official dataset source
+Five diagnostic classes were used:
 
-[PTB-XL – PhysioNet](https://physionet.org/content/ptb-xl/1.0.3/)
+| Class | Description            |
+| ----- | ---------------------- |
+| NORM  | Normal ECG             |
+| MI    | Myocardial Infarction  |
+| STTC  | ST/T Change            |
+| CD    | Conduction Disturbance |
+| HYP   | Hypertrophy            |
 
+### Dataset source
 
-### Classes
+The PTB-XL dataset is publicly available through PhysioNet:
 
-The superdiagnostic classification scheme was used, consisting of five
-classes:
+[PTB-XL — PhysioNet](https://physionet.org/content/ptb-xl/1.0.3/?utm_source=chatgpt.com)
 
-| Class | Description |
-|---|---|
-| NORM | Normal ECG |
-| MI | Myocardial Infarction |
-| STTC | ST/T Change |
-| CD | Conduction Disturbance |
-| HYP | Hypertrophy |
-
-### Dataset split used in this study
-
-| Class | Training | Validation | Test |
-|---|---:|---:|---:|
-| NORM | 7243 | 914 | 912 |
-| CD | 1353 | 171 | 184 |
-| HYP | 415 | 64 | 56 |
-| STTC | 1903 | 255 | 242 |
-| MI | 2043 | 233 | 256 |
+Please refer to the official PhysioNet page for the dataset description, licensing, citation requirements, and access conditions.
 
 ---
 
-## 3. ECG Image Representation
+## 3. Dataset Splits Used in This Study
 
-In this study, the raw ECG signals were converted into digital ECG images
-before being provided to the deep learning models.
+The experiments reported in the paper used predefined training, validation, and test subsets.
 
-This representation enables the use of convolutional neural networks (CNNs)
-for ECG classification.
+### Chapman
 
-The generated images were organized using the following directory structure:
+| Class | Training | Validation | Test |
+| ----- | -------: | ---------: | ---: |
+| SR    |     1301 |        145 |  380 |
+| SB    |     2821 |        308 |  760 |
+| GSVT  |     1633 |        196 |  447 |
+| AFIB  |     1599 |        169 |  457 |
+
+### PTB-XL
+
+| Class | Training | Validation | Test |
+| ----- | -------: | ---------: | ---: |
+| NORM  |     7243 |        914 |  912 |
+| CD    |     1353 |        171 |  184 |
+| HYP   |      415 |         64 |   56 |
+| STTC  |     1903 |        255 |  242 |
+| MI    |     2043 |        233 |  256 |
+
+These distributions correspond to the experimental setup described in the manuscript.
+
+---
+
+## 4. Data Processing Pipeline
+
+The raw ECG recordings were converted into digital ECG images before being provided to the convolutional neural network.
+
+The overall data pipeline is:
 
 ```text
-dataset/
-├── train/
-│   ├── class_1/
-│   ├── class_2/
-│   └── ...
-│
-├── valid/
-│   ├── class_1/
-│   ├── class_2/
-│   └── ...
-│
-└── test/
-    ├── class_1/
-    ├── class_2/
-    └── ...
+Public ECG Dataset
+        |
+        v
+Raw 12-lead ECG recordings
+        |
+        v
+ECG preprocessing
+        |
+        v
+ECG-to-image conversion
+        |
+        v
+Train / Validation / Test split
+        |
+        v
+ImageFolder-compatible directory structure
+        |
+        v
+PyTorch DataLoader
+        |
+        v
+EIA-CKD model
+```
+
+The exact preprocessing and ECG-to-image conversion procedure is documented in the source code of this repository.
+
+---
+
+## 5. Expected Directory Structure
+
+After the preprocessing stage, the image data are expected to follow the directory structure required by `torchvision.datasets.ImageFolder`.
+
+For Chapman:
+
+```text
+train/
+├── AFIB/
+├── GSVT/
+├── SB/
+└── SR/
+
+valid/
+├── AFIB/
+├── GSVT/
+├── SB/
+└── SR/
+
+test/
+├── AFIB/
+├── GSVT/
+├── SB/
+└── SR/
+```
+
+For PTB-XL:
+
+```text
+train/
+├── CD/
+├── HYP/
+├── MI/
+├── NORM/
+└── STTC/
+
+valid/
+├── CD/
+├── HYP/
+├── MI/
+├── NORM/
+└── STTC/
+
+test/
+├── CD/
+├── HYP/
+├── MI/
+├── NORM/
+└── STTC/
+```
+
+Each class directory contains the ECG images generated during preprocessing.
+
+---
+
+## 6. Local Dataset Paths
+
+The training code expects the processed datasets to be available locally.
+
+The corresponding directories are:
+
+```python
+train_data_path = "/path/to/train"
+valid_data_path = "/path/to/valid"
+test_data_path = "/path/to/test"
+```
+
+The paths should be changed according to the location of the downloaded and processed datasets on the user's system.
+
+---
+
+## 7. Important Note on Data Redistribution
+
+The original ECG datasets are not included in this GitHub repository.
+
+This repository provides:
+
+* dataset sources;
+* dataset class definitions;
+* dataset split information;
+* preprocessing documentation;
+* expected directory structure;
+* code required to prepare the data for model training.
+
+Users should download the datasets directly from their respective public sources and comply with the terms and citation requirements specified by the dataset providers.
+
+---
+
+## 8. Reproducibility
+
+To reproduce the experiments, users should:
+
+1. Download the Chapman/Shaoxing and PTB-XL datasets from their official/public sources.
+2. Run the preprocessing scripts provided in this repository.
+3. Convert the ECG recordings into the required image representation.
+4. Organize the resulting images according to the directory structure described above.
+5. Run the training and evaluation scripts provided in the repository.
+
+Detailed commands for these steps will be provided in the main `README.md`.
+
+---
+
+## 9. Dataset Citations
+
+Users reproducing the experiments should cite the original dataset publications in addition to citing this repository and the associated paper.
+
+Please consult the official dataset pages for the required citations.
