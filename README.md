@@ -32,7 +32,11 @@ With approximately **102K trainable parameters**, EIA-CKD achieves:
 
 These results demonstrate the potential of EIA-CKD for efficient ECG classification
 in wearable and resource-constrained IoMT applications.
-
+<p align="center">
+  <img src="assets/eia_ckd_framework.png"
+       alt="EIA-CKD Framework"
+       width="900">
+</p>
 # Dataset
 
 This directory contains documentation and instructions for obtaining and preparing the ECG datasets used in the experiments reported in the paper.
