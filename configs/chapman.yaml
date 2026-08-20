@@ -1,0 +1,36 @@
+dataset: chapman
+
+num_classes: 4
+
+classes:
+
+* SR
+* SB
+* GSVT
+* AFIB
+
+image_size: 300
+
+batch_size: 128
+
+num_workers: 0
+
+seed: 5
+
+epochs: 50
+
+learning_rate: 0.0003
+
+weight_decay: 0.00001
+
+temperature: 3.0
+
+label_smoothing: 0.1
+
+scheduler_t_max: 80
+
+beta_min: 0.6
+
+alpha_warmup_epochs: 20
+
+output_dir: outputs/chapman
