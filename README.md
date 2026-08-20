@@ -1,5 +1,6 @@
-# EIA-CKD-ECG
+# EIA-CKD: End-to-End Internal Augmentation and Curriculum-Based Knowledge Distillation for Lightweight ECG Classification
 Official implementation of EIA-CKD, a lightweight end-to-end framework for ECG classification using internal multi-view augmentation and curriculum-based knowledge distillation.
+
 # Dataset
 
 This directory contains documentation and instructions for obtaining and preparing the ECG datasets used in the experiments reported in the paper.
