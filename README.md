@@ -61,28 +61,3 @@ The PTB-XL dataset is publicly available through PhysioNet:
 Please refer to the official PhysioNet page for the dataset description, licensing, citation requirements, and access conditions.
 
 ---
-
-## 3. Dataset Splits Used in This Study
-
-The experiments reported in the paper used predefined training, validation, and test subsets.
-
-### Chapman
-
-| Class | Training | Validation | Test |
-| ----- | -------: | ---------: | ---: |
-| SR    |     1301 |        145 |  380 |
-| SB    |     2821 |        308 |  760 |
-| GSVT  |     1633 |        196 |  447 |
-| AFIB  |     1599 |        169 |  457 |
-
-### PTB-XL
-
-| Class | Training | Validation | Test |
-| ----- | -------: | ---------: | ---: |
-| NORM  |     7243 |        914 |  912 |
-| CD    |     1353 |        171 |  184 |
-| HYP   |      415 |         64 |   56 |
-| STTC  |     1903 |        255 |  242 |
-| MI    |     2043 |        233 |  256 |
-
-These distributions correspond to the experimental setup described in the manuscript.
