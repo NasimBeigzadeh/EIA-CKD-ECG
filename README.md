@@ -119,7 +119,6 @@ All experiments were implemented using **PyTorch** and conducted on the
 | Optimizer | AdamW |
 | Learning Rate | 3 × 10⁻⁴ |
 | Weight Decay | 1 × 10⁻⁵ |
-| LR Scheduler | CosineAnnealingLR |
 | Label Smoothing | 0.1 |
 | Temperature | 3.0 |
 ## Evaluation Metrics
