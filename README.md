@@ -117,46 +117,6 @@ All experiments were implemented using **PyTorch** and conducted on the
 | LR Scheduler | CosineAnnealingLR |
 | Label Smoothing | 0.1 |
 | Temperature | 3.0 |
-### Training Objective
-
-The training objective combines supervised classification with
-internal consistency-based knowledge distillation.
-
-The total loss is defined as:
-
-$$
-\mathcal{L}
-=
-\beta_{\mathrm{sup}}\mathcal{L}_{CE}
-+
-(1-\beta_{\mathrm{sup}})
-\alpha_{KL}\mathcal{L}_{KL}
-$$
-
-where:
-
-- $\mathcal{L}_{CE}$ is the supervised Cross-Entropy loss with label smoothing.
-- $\mathcal{L}_{KL}$ is the KL-divergence consistency loss.
-- $\beta_{\mathrm{sup}}$ controls the contribution of ground-truth supervision.
-- $\alpha_{KL}$ controls the curriculum-based contribution of internal consensus.
-The curriculum coefficients are scheduled during training as:
-
-$$
-\beta_{\mathrm{sup}}
-=
-\max(0.6, 1-\frac{epoch}{80})
-$$
-
-and
-
-$$
-\alpha_{KL}
-=
-\min(1,\frac{epoch}{20}).
-$$
-
-This gradually shifts the training objective from primarily supervised learning
-toward internal consensus-based supervision.
 ## Evaluation Metrics
 
 The proposed model is evaluated using the following standard metrics:
