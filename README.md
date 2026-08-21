@@ -40,14 +40,11 @@ in wearable and resource-constrained IoMT applications.
 
 ## Dataset
 
-This directory contains documentation and instructions for obtaining and preparing the ECG datasets used in the experiments reported in the paper.
 
 The proposed EIA-CKD framework was trained and evaluated using two publicly available benchmark datasets:
 
 1. Chapman/Shaoxing 12-lead ECG Database
 2. PTB-XL ECG Database
-
-The original datasets are **not redistributed in this repository**. Users should obtain the datasets from their respective public sources and follow the preprocessing instructions provided in this repository.
 
 ---
 
