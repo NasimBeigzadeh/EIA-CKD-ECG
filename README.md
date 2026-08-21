@@ -67,8 +67,6 @@ The dataset is publicly available through Kaggle:
 
 [Chapman/Shaoxing 12-lead ECG Database — Kaggle](https://www.kaggle.com/datasets/erarayamorenzomuten/chapmanshaoxing-12lead-ecg-database?utm_source=chatgpt.com)
 
-Please refer to the original dataset publication and source page for dataset licensing, attribution, and usage conditions.
-
 ---
 
 ## 2. PTB-XL ECG Dataset
@@ -92,8 +90,6 @@ Five diagnostic classes were used:
 The PTB-XL dataset is publicly available through PhysioNet:
 
 [PTB-XL — PhysioNet](https://physionet.org/content/ptb-xl/1.0.3/?utm_source=chatgpt.com)
-
-Please refer to the official PhysioNet page for the dataset description, licensing, citation requirements, and access conditions.
 
 ---
 ## Experimental Setup
